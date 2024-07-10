@@ -57,7 +57,7 @@ public class SysRoleServiceImpl implements SysRoleService {
         //查询所有的角色数据
        List<SysRole> sysRoleList =  sysRoleMapper.findAllRoles();
        //查询当前登录用户的角色数据
-        List<Long> sysRoles = sysRoleMapper.findSysUserRoleByUserId(userId)
+        List<Long> sysRoles = sysRoleMapper.findSysUserRoleByUserId(userId);
         //构造响应结果数据
        Map<String, Object> map = new HashMap<String, Object>();
        map.put("allRoleList", sysRoleList);

@@ -19,7 +19,7 @@ spring:
 # mybatis的配置
 mybatis:
   config-location: classpath:/mybatis-config.xml
-  mapper-locations: classpath:/mapper/*/*.xml
+  mapper-locations: classpath:/mapper/*.xml
 # 自定义配置
 spzx:
   auth:

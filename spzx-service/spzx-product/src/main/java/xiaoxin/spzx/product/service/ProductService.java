@@ -1,6 +1,9 @@
 package xiaoxin.spzx.product.service;
 
+import com.github.pagehelper.PageInfo;
+import xiaoxin.spzx.model.dto.h5.ProductSkuDto;
 import xiaoxin.spzx.model.entity.product.ProductSku;
+import xiaoxin.spzx.model.vo.h5.ProductItemVo;
 
 import java.util.List;
 
@@ -17,4 +20,7 @@ public interface ProductService {
     List<ProductSku> findProductzSkuBySale();
 
 
+    PageInfo<ProductSku> findByPage(Integer page, Integer limit, ProductSkuDto productSkuDto);
+
+    ProductItemVo item(Long skuId);
 }

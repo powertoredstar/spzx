@@ -1,6 +1,9 @@
 package xiaoxin.spzx.product.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
+import xiaoxin.spzx.model.entity.product.ProductSku;
+
+import java.util.List;
 
 /**
  * ClassName: ProductSkuMapper
@@ -13,4 +16,7 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface ProductSkuMapper {
+    ProductSku getById(Long skuId);
+
+    List<ProductSku> findByProductId(Long productId);
 }

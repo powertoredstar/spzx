@@ -4,6 +4,18 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- namespace等于mapper接口类的全限定名,这样实现对应 -->
 <mapper namespace="xiaoxin.spzx.product.mapper.ProductSkuMapper">
-
-
+<sql id="columns">
+    id,sku_code,sku_name,product_id,thumb_img,sale_price,market_price,cost_price,stock_num,sku_spec,weight,volume,status,create_time,update_time,is_deleted
+</sql>
+<resultMap id="productSkuMap" type="xiaoxin.spzx.model.entity.product.ProductSku" autoMapping="true"></resultMap>
+    <select id="getById" resultMap="productSkuMap">
+        select <include refid="columns"></include>
+        from product_sku
+        where id = #{id}
+    </select>
+    <select id="findByProductId" resultMap="productSkuMap">
+        select <include refid="columns"></include>
+        from product_sku
+        where product_id = #{productId}
+    </select>
 </mapper>

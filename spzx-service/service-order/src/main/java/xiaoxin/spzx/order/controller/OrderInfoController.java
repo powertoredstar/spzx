@@ -4,6 +4,7 @@ import com.github.pagehelper.PageInfo;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.beans.factory.NamedBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import xiaoxin.annoatation.EnableUserTokenFeignInterceptor;
@@ -64,5 +65,17 @@ public class OrderInfoController {
     ){
         PageInfo<OrderInfo> pageInfo = orderInfoService.findUserPage(page,limit,orderStatus);
         return Result.build(pageInfo,ResultCodeEnum.SUCCESS);
+    }
+    @Operation(summary = "获取订单信息")
+    @GetMapping("auth/getOrderInfoByOrderNo/{orderNo}")
+    public Result<OrderInfo> getOrderInfoByOrderNo(@Parameter(name = "orderId",description = "订单id",required = true) @PathVariable String orderNo){
+        OrderInfo orderInfo = orderInfoService.getByOrderNo(orderNo);
+        return Result.build(orderInfo,ResultCodeEnum.SUCCESS);
+    }
+    @Operation(summary = "获取订单分页列表")
+    @GetMapping("auth/updateOrderStatusPayed/{orderNo}/{orderStatus}")
+    public Result updateOrderStatus(@PathVariable(value = "orderNo") String orderNo,@PathVariable(value = "orderStatus") Integer orderStatus){
+        orderInfoService.updateOrderStatus(orderNo,orderStatus);
+        return Result.build(null,ResultCodeEnum.SUCCESS);
     }
 }

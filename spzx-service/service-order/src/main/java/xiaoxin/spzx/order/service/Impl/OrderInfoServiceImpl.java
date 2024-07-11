@@ -185,4 +185,29 @@ public class OrderInfoServiceImpl implements OrderInfoService {
         });
         return new PageInfo<>(orderInfoList);
     }
+
+    @Override
+    public OrderInfo getByOrderNo(String orderNo) {
+        OrderInfo orderInfo = orderInfoMapper.getByOrderNo(orderNo);
+        List<OrderItem> orderItems = orderItemMapper.findByOrderId(orderInfo.getId());
+        orderInfo.setOrderItemList(orderItems);
+        return orderInfo;
+    }
+    @Transactional
+    @Override
+    public void updateOrderStatus(String orderNo, Integer orderStatus) {
+        //更新订单状态
+        OrderInfo orderInfo = orderInfoMapper.getByOrderNo(orderNo);
+        orderInfo.setOrderStatus(1);
+        orderInfo.setPayType(orderStatus);
+        orderInfo.setPaymentTime(new Date());
+        orderInfoMapper.updateById(orderInfo);
+
+        //记录日志
+        OrderLog orderLog = new OrderLog();
+        orderLog.setOrderId(orderInfo.getId());
+        orderLog.setProcessStatus(1);
+        orderLog.setNote("支付宝支付成功");
+        orderLogMapper.save(orderLog);
+    }
 }

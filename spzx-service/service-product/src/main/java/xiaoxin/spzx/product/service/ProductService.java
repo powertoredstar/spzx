@@ -2,6 +2,7 @@ package xiaoxin.spzx.product.service;
 
 import com.github.pagehelper.PageInfo;
 import xiaoxin.spzx.model.dto.h5.ProductSkuDto;
+import xiaoxin.spzx.model.dto.product.SkuSaleDto;
 import xiaoxin.spzx.model.entity.product.ProductSku;
 import xiaoxin.spzx.model.vo.h5.ProductItemVo;
 
@@ -25,4 +26,6 @@ public interface ProductService {
     ProductItemVo item(Long skuId);
 
     ProductSku getBySkuId(Long skuId);
+
+    Boolean updateSkuSaleNum(List<SkuSaleDto> skuSaleDtoList);
 }

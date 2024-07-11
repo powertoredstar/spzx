@@ -3,7 +3,12 @@ package xiaoxin.spzx.feign.product;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import xiaoxin.spzx.model.dto.product.SkuSaleDto;
 import xiaoxin.spzx.model.entity.product.ProductSku;
+
+import java.util.List;
 
 /**
  * ClassName: ProductFeignClient
@@ -18,4 +23,6 @@ import xiaoxin.spzx.model.entity.product.ProductSku;
 public interface ProductFeignClient {
     @GetMapping("/api/product/getBySkuId/{skuId}")
     public abstract ProductSku getBySkuId(@PathVariable("skuId") Long skuId);
+    @PostMapping("/api/product/updateSkuSaleNum")
+    public Boolean updateSkuSaleNum(@RequestBody List<SkuSaleDto> skuSaleDtoList);
 }

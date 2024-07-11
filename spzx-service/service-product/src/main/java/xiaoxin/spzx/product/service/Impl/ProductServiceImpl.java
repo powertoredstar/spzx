@@ -5,7 +5,10 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.CollectionUtils;
 import xiaoxin.spzx.model.dto.h5.ProductSkuDto;
+import xiaoxin.spzx.model.dto.product.SkuSaleDto;
 import xiaoxin.spzx.model.entity.product.Product;
 import xiaoxin.spzx.model.entity.product.ProductDetails;
 import xiaoxin.spzx.model.entity.product.ProductSku;
@@ -73,5 +76,15 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public ProductSku getBySkuId(Long skuId) {
         return productSkuMapper.getById(skuId);
+    }
+    @Transactional
+    @Override
+    public Boolean updateSkuSaleNum(List<SkuSaleDto> skuSaleDtoList) {
+        if(!CollectionUtils.isEmpty(skuSaleDtoList)){
+            for(SkuSaleDto skuSaleDto:skuSaleDtoList){
+                productSkuMapper.updateSale(skuSaleDto.getSkuId(),skuSaleDto.getNum());
+            }
+        }
+        return true;
     }
 }

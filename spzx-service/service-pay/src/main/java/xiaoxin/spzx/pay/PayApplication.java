@@ -20,7 +20,7 @@ import xiaoxin.spzx.pay.properties.AlipayProperties;
 @SpringBootApplication
 @EnableUserWebMvcConfiguration
 @EnableConfigurationProperties(value = {AlipayProperties.class})
-@EnableFeignClients(basePackages = {"xiaoxin.spzx.feign.order"})
+@EnableFeignClients(basePackages = {"xiaoxin.spzx.feign.order","xiaoxin.spzx.feign.product"})
 public class PayApplication {
     public static void main(String[] args) {
         SpringApplication.run(PayApplication.class, args);

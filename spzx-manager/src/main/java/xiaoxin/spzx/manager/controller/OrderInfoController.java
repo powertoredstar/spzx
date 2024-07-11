@@ -28,7 +28,7 @@ import xiaoxin.spzx.model.vo.order.OrderStatisticsVo;
 public class OrderInfoController {
     @Autowired
     private OrderInfoService orderInfoService;
-    @Operation("统计查询接口")
+    @Operation(summary = "统计查询接口")
     @GetMapping("/getOrderStatisticsData")
     public Result<OrderStatisticsVo> getOrderStatisticsData(@RequestBody OrderStatisticsDto orderStatisticsDto){
         OrderStatisticsVo orderStatisticsVo = orderInfoService.getOrderStatisticsData(orderStatisticsDto);

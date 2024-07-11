@@ -1,5 +1,6 @@
 package xiaoxin.spzx.pay.service;
 
+import org.springframework.stereotype.Service;
 import xiaoxin.spzx.model.entity.pay.PaymentInfo;
 
 import java.util.Map;
@@ -13,6 +14,7 @@ import java.util.Map;
  * @Create 2024/7/11 13:55
  * @Version 1.0
  */
+@Service
 public interface PaymentInfoService {
     PaymentInfo savePaymentInfo(String orderNo);
 

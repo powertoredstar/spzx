@@ -73,9 +73,12 @@ public class PaymentInfoServiceImpl implements PaymentInfoService {
         paymentInfo.setCallbackContent(JSON.toJSONString(paramMap));
         paymentInfoMapper.updateById(paymentInfo);
         //更新订单支付状态
+
         orderFeignClient.updateOrderStatus(paymentInfo.getOrderNo(),payType);
+
         //更新商品销量
-        Result<OrderInfo> orderInfoByOrderNo = orderFeignClient.getOrderInfoByOrderNo(paymentInfo.getOrderNo());
+       Result<OrderInfo> orderInfoByOrderNo = orderFeignClient.getOrderInfoByOrderNo(paymentInfo.getOrderNo());
+
         OrderInfo orderInfo = orderInfoByOrderNo.getData();
         List<SkuSaleDto> skuSaleDtoList = orderInfo.getOrderItemList().stream()
                 .map(item -> {

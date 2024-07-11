@@ -27,7 +27,7 @@ import java.util.Map;
  * @Create 2024/7/11 14:10
  * @Version 1.0
  */
-@Controller
+@RestController
 @RequestMapping("/api/order/alipay")
 public class AlipayController {
     private static final Logger log = LoggerFactory.getLogger(AlipayController.class);
@@ -39,14 +39,12 @@ public class AlipayController {
     private PaymentInfoService paymentInfoService;
     @Operation(summary = "支付宝下单")
     @GetMapping("submitAlipay/{orderNo}")
-    @ResponseBody
     public Result<String> submitAlipay(@Parameter(name = "orderNo",description = "订单号",required = true) @PathVariable("orderNo") String orderNo) {
         String form = alipayService.submitAlipay(orderNo);
         return Result.build(form, ResultCodeEnum.SUCCESS);
     }
     @Operation(summary = "支付宝异步回调")
-    @RequestMapping("callback/notify")
-    @ResponseBody
+    @PostMapping("callback/notify")
     public String alipayNotify(@RequestParam Map<String,String> paramMap, HttpServletRequest request) {
         log.info("AlipayController .... alipayNotify 执行了");
         //调用sdk验证签名

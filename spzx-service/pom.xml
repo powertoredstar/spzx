@@ -12,9 +12,10 @@
     <artifactId>spzx-service</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>spzx-product</module>
-        <module>spzx-user</module>
-        <module>spzx-order</module>
+        <module>service-product</module>
+        <module>service-user</module>
+        <module>service-order</module>
+        <module>service-cart</module>
     </modules>
 
     <properties>

@@ -12,8 +12,9 @@
     <artifactId>spzx-service-client</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>spzx-product-client</module>
-        <module>spzx-user-client</module>
+        <module>service-product-client</module>
+        <module>service-user-client</module>
+        <module>service-cart-client</module>
     </modules>
 
     <properties>
@@ -21,5 +22,34 @@
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+    <dependencies>
+
+        <dependency>
+            <groupId>xiaoxin</groupId>
+            <artifactId>common-util</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>provided </scope>
+        </dependency>
+
+        <dependency>
+            <groupId>xiaoxin</groupId>
+            <artifactId>spzx-model</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>provided </scope>
+        </dependency>
+
+        <!-- openfeign依赖 -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+
+        <!-- loadbalancer依赖 -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-loadbalancer</artifactId>
+        </dependency>
+
+    </dependencies>
 
 </project>

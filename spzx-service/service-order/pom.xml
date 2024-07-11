@@ -5,11 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>xiaoxin</groupId>
-        <artifactId>spzx-common</artifactId>
+        <artifactId>spzx-service</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>common-service</artifactId>
+    <artifactId>service-order</artifactId>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
@@ -17,39 +17,24 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <dependencies>
-
-        <!-- common-util模块 -->
-        <dependency>
-            <groupId>xiaoxin</groupId>
-            <artifactId>common-util</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-
-        <!-- spzx-model模块 -->
-        <dependency>
-            <groupId>xiaoxin</groupId>
-            <artifactId>spzx-model</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-
-        <!-- spring boot web开发所需要的起步依赖 -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
-            <scope>provided</scope>
         </dependency>
-        <!-- openfeign依赖 -->
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-openfeign</artifactId>
-            <scope>provided</scope>
+            <groupId>xiaoxin</groupId>
+            <artifactId>service-cart-client</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
-
+        <dependency>
+            <groupId>xiaoxin</groupId>
+            <artifactId>service-user-client</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>xiaoxin</groupId>
+            <artifactId>service-product-client</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
-
 </project>
